@@ -5,15 +5,10 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 
 function App() {
-  const [signUpPopup, setSignUpPopup] = useState(false);
-  const toggleSignUpPopup = () => {
-    setSignUpPopup(!signUpPopup)
-  }
   return (
     <Router>
-      <Navbar signUpPopup={signUpPopup} toggleSignUpPopup={toggleSignUpPopup}/>
       <Routes>
-        <Route path="/" element={<Home signUpPopup={signUpPopup} setSignIn={setSignUpPopup}/>} />
+        <Route path="/" element={<Home/>} />
       </Routes>
     </Router>
   );

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import "./SignIn.css";
 
-const SignIn = () => {
-  const [showPopup, setShowPopup] = useState(true);
+const SignIn = ({signInPopup,toggleSignInPopup}) => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const closePopup = () => {
-    setShowPopup(false);
-  };
+
 
   const validatePassword = (password) => {
     const minLength = 8;
@@ -37,10 +34,9 @@ const SignIn = () => {
 
   return (
     <>
-      {showPopup && (
         <div className="popup-overlay">
           <div className="popup-container">
-            <button className="close-btn" onClick={closePopup}>
+            <button className="close-btn" onClick={toggleSignInPopup}>
               &times;
             </button>
             <h2>Sign In</h2>
@@ -62,7 +58,6 @@ const SignIn = () => {
             </form>
           </div>
         </div>
-      )}
     </>
   );
 };

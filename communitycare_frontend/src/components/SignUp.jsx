@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import "./SignUp.css";
 
-const SignupPopup = () => {
-  const [showPopup, setShowPopup] = useState(true);
+const SignupPopup = ({toggleSignUpPopup}) => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const closePopup = () => {
-    setShowPopup(false);
-  };
 
   const validatePassword = (password) => {
     const capitalLetter = /[A-Z]/;
@@ -50,10 +46,9 @@ const SignupPopup = () => {
 
   return (
     <>
-      {showPopup && (
         <div className="popup-overlay">
           <div className="popup-container">
-            <button className="close-btn" onClick={closePopup}>
+            <button className="close-btn" onClick={toggleSignUpPopup}>
               &times;
             </button>
             <h2>Sign Up</h2>
@@ -78,7 +73,6 @@ const SignupPopup = () => {
             </form>
           </div>
         </div>
-      )}
     </>
   );
 };

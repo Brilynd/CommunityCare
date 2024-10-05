@@ -5,7 +5,7 @@ import {HeartHandshake,CircleX,Menu} from 'lucide-react'
 
 import './Navbar.css'; // Import the CSS file
 
-const Navbar = ({toggleSignUpPopup}) => {
+const Navbar = ({toggleSignUpPopup,toggleSignInPopup}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -38,10 +38,10 @@ const Navbar = ({toggleSignUpPopup}) => {
           Profile
         </Link>
         {isLoggedIn ? (
-          <p className="link nav-link" onClick={()=>toggleSignUpPopup()}>
+          <p className="link nav-link" onClick={toggleSignUpPopup}>
             Sign Out
           </p>
-        ) : <p className="link nav-link" onClick={()=>toggleSignUpPopup()}>
+        ) : <p className="link nav-link" onClick={()=>toggleSignInPopup()}>
         Sign In
       </p>}
 
