@@ -5,7 +5,19 @@
     background-color: #333;
     padding: 10px 20px;
 }
-
+.secondaryLogoTxt{
+    display: flex;
+    margin: 0;
+}
+.primaryLogoTxt{
+    display: flex;
+}
+.logo-container{
+    display: flex;
+    vertical-align: middle;
+    align-self: center;
+    align-items: center;
+}
 .hamburger {
     background: none;
     border: none;

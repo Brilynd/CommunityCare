@@ -1,9 +1,16 @@
 import "./Home.css"
 import JumboTron from "./JumboTron"
-const Home = () =>{
+import SignupPopup from "./SignUp"
+const Home = ({signUpPopup,setSignIn}) =>{
+
+const toggleSignInPopup = () => {
+    setSignIn(!signUpPopup)
+}
+
 return(
     <div>
-        <JumboTron />
+        <JumboTron toggleSignIn={toggleSignInPopup}/>
+        {signUpPopup && <SignupPopup signUpPopup={signUpPopup}/>}
     </div>
 )
 }
