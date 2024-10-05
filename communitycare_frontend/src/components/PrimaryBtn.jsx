@@ -1,3 +1,4 @@
+import "./PrimaryBtn.css";
 const PrimaryBtn = ({ text, onClick }) => {
     return (
         <button className="primary-btn" onClick={onClick}>
@@ -5,3 +6,4 @@ const PrimaryBtn = ({ text, onClick }) => {
         </button>
     );
     };
+export default PrimaryBtn;

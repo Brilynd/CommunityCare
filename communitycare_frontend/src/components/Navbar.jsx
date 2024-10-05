@@ -1,9 +1,8 @@
 // Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IonIcon } from 'react-icons/ion';
-import {HeartHandshake} from 'lucide-react'
-import { home, informationCircle, mail, menu, close } from 'ionicons/icons';
+import {HeartHandshake,CircleX,Menu} from 'lucide-react'
+
 import './Navbar.css'; // Import the CSS file
 
 const Navbar = () => {
@@ -22,7 +21,7 @@ const Navbar = () => {
 
     <nav className="navbar">
       <button onClick={toggleMobileMenu} className="hamburger">
-        <IonIcon icon={isMobileMenuOpen ? close : menu} className="icon" />
+        {isMobileMenuOpen ? <CircleX size="30" /> : <Menu size="30" />}
       </button>
       <div className={`links ${isMobileMenuOpen ? 'show' : ''}`}>
         <Link to="/" className="link nav-link" onClick={toggleMobileMenu}>
