@@ -81,3 +81,4 @@ module.exports = { addUser, loginUser };
 // Example usage:
 // addUser('testUser', 'password123').then(result => console.log(result));
 // loginUser('testUser', 'password123').then(result => console.log(result));
+
