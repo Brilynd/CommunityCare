@@ -1,0 +1,56 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    display: none; /* Hide the hamburger on larger screens */
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    position: relative; /* Necessary for ::after pseudo-element */
+}
+
+.icon {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.nav-link {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff; /* or any color you'd like */
+    transition: width 0.3s ease; /* Duration and ease of transition */
+}
+
+.nav-link:hover::after {
+    width: 100%; /* Expand the line from left to right on hover */
+}
