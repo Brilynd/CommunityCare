@@ -3,7 +3,7 @@ import "./ViewRequests.css";
 import Navbar from "./Navbar";
 import { getAllRequest } from "../Api";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import PaymentPage from "./PaymentPage";
+
 const ViewRequests = () => {
   const [requests, setRequests] = useState([]);
   const [mapCenter, setMapCenter] = useState({ lat: 40.7128, lng: -74.006 });
@@ -140,7 +140,6 @@ const ViewRequests = () => {
                 </p>
               </label>
             </div>
-            {selectedRequest.financialAssistance && (<PaymentPage />)}
           </div>
         )}
       </div>
