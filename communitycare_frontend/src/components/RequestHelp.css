@@ -2,7 +2,6 @@
 body {
     background-color: #489283;
     margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 /* Form container */
@@ -16,7 +15,7 @@ body {
 }
 
 /* Header */
-.header {
+.request-header {
     color: #02353C;
     text-align: center;
     margin-bottom: 20px;
@@ -29,7 +28,7 @@ body {
 }
 
 /* Form group */
-.form-group {
+.request-form-group {
     margin-bottom: 16px;
 }
 
@@ -56,6 +55,10 @@ textarea {
 /* Textarea specific styles */
 textarea {
     min-height: 100px;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 /* Toggle section */
