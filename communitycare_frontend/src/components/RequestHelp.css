@@ -1,8 +1,4 @@
-/* Page background */
-body {
-    background-color: #489283;
-    margin: 0;
-}
+
 
 /* Form container */
 .request-help-container {
@@ -11,29 +7,30 @@ body {
     margin: 50px auto;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 /* Header */
-.request-header {
+.request-help-container .header {
     color: #02353C;
     text-align: center;
     margin-bottom: 20px;
 }
 
 /* Form styling */
-.request-form {
+.request-help-container .request-form {
     display: flex;
     flex-direction: column;
 }
 
 /* Form group */
-.request-form-group {
+.request-help-container .form-group {
     margin-bottom: 16px;
 }
 
 /* Labels */
-label {
+.request-help-container label {
     color: #02353C;
     font-weight: bold;
     margin-bottom: 8px;
@@ -41,38 +38,51 @@ label {
 }
 
 /* Text inputs and text areas */
-input[type="text"],
-textarea {
-    background-color: #02353C;
-    color: white;
+.request-help-container input[type="text"],
+.request-help-container textarea,
+.request-help-container select {
+    background-color: #f0f4f8; /* Light gray for inputs */
+    color: #02353C;
     padding: 10px;
-    border: 3px solid #02353C;
+    border: 2px solid #02353C; /* Slightly thinner border for modern look */
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease; /* Smooth transition on focus */
 }
 
 /* Textarea specific styles */
-textarea {
+.request-help-container textarea {
     min-height: 100px;
-    font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
 
+/* Styling the select dropdown */
+.request-help-container select {
+    -webkit-appearance: none; /* Remove default styling */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%2302353C" height="12" width="12" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
 /* Toggle section */
-.toggle {
+.request-help-container .toggle {
     display: flex;
     align-items: center;
 }
 
-.toggle input {
+.request-help-container .toggle input {
     margin-right: 10px;
 }
 
 /* Submit button */
-.submit-button {
+.request-help-container .submit-button {
     background-color: #02353C;
     color: white;
     padding: 10px 20px;
@@ -82,9 +92,15 @@ textarea {
     font-weight: bold;
     align-self: center; /* Center the button */
     width: fit-content; /* Ensure button doesn't take up full width */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 /* Submit button hover effect */
-.submit-button:hover {
-    background-color: #02353C75;
+.request-help-container .submit-button:hover {
+    background-color: #02353C75; /* Slightly transparent on hover */
+}
+
+/* Form container hover effect */
+.request-help-container:hover {
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.15); /* Elevate effect on hover */
 }
