@@ -69,6 +69,13 @@ app.post("/requestHelp", async (req, res) => {
     financialAssistance: financialAssistance,
   });
 });
+
+// Route to get all requests
+app.get("/requests", async (req, res) => {
+  const requests = await userAuth.getAllRequests();
+  return res.status(200).json({ success: true, requests });
+});
+
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
