@@ -89,24 +89,26 @@ async function addRequestHelp(
   title,
   type,
   description,
-  address,
-  financialAssistance
+  financialAssistance,
+  latitude,
+  longitude
 ) {
   await client.connect();
   const db = client.db(dbName);
-  const requestsCollection = database.collection("requests");
+  const requestsCollection = db.collection("requests");
 
   const request = {
     userId: new ObjectId(userId), // Store user ID
     title,
     type,
     description,
-    address,
     financialAssistance,
-    createdAt: new Date(),
+    latitude,
+    longitude
   };
 
   const result = await requestsCollection.insertOne(request);
+  console.log("Request added successfully:", result);
   return result.insertedId;
 }
 
@@ -119,7 +121,10 @@ async function getAllRequests() {
 
     // Fetch all requests
     const requests = await requestsCollection.find({}).toArray();
-
+    for (let i = 0; i < requests.length; i++) {
+      const request = requests[i];
+      console.log(`Request ${i + 1}: ${request.title}`);
+    }
     return requests;
   } catch (error) {
     console.error("Error fetching requests:", error);

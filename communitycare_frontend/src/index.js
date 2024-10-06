@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <React.StrictMode>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzpbD_LBjyzk7_jQ00DjSF4_r9J5M8MAk&libraries=places&callback=initMap"async></script>
     <App />
   </React.StrictMode>
 );

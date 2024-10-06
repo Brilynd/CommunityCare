@@ -30,3 +30,22 @@ export const signUpUser = async (firstName, lastName, email, password, phoneNumb
         return null;
     }
 }
+
+export const addRequestHelp = async (userId, title, type, description, financialAssistance,latitude,longitude) => {
+    try {
+        const response = await axios.post(`${API_URL}/requestHelp`, {
+            userId,
+            title,
+            type,
+            description,
+            financialAssistance,
+            latitude,
+            longitude
+        });
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error("Error adding request for help:", error);
+        return null;
+    }
+}

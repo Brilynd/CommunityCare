@@ -42,10 +42,11 @@ app.post("/login", async (req, res) => {
   return res.status(result ? 200 : 400).json(result);
 });
 app.post("/requestHelp", async (req, res) => {
-  const { userId, title, type, description, address, financialAssistance } =
+  const { userId, title, type, description, address, financialAssistance,latitude,
+    longitude} =
     req.body;
   console.log(req.body);
-  if (!userId || !title || !type || !description || !address) {
+if (!userId || !title || !type || !description || !latitude || !longitude) {
     return res
       .status(400)
       .json({ success: false, message: "All fields are required" });
@@ -56,8 +57,9 @@ app.post("/requestHelp", async (req, res) => {
     title,
     type,
     description,
-    address,
-    financialAssistance
+    financialAssistance,
+    latitude,
+    longitude
   );
   return res.status(result ? 201 : 400).json({
     success: !!result,
@@ -67,6 +69,8 @@ app.post("/requestHelp", async (req, res) => {
     description: description,
     address: address,
     financialAssistance: financialAssistance,
+    latitude: latitude,
+    longitude: longitude,
   });
 });
 
