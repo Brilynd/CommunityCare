@@ -1,7 +1,7 @@
 require("dotenv").config(); // Load environment variables from .env
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const bcrypt = require("bcrypt"); // For password hashing
-
+const { ObjectId } = require("mongodb"); // or from mongoose if you're using it
 // Get MongoDB URI and DB name from environment variables
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB;
@@ -86,12 +86,12 @@ async function addRequestHelp(
   address,
   financialAssistance
 ) {
-  await connectDB();
-  const database = client.db("your_database_name");
+  await client.connect();
+  const database = client.db("registerInfo");
   const requestsCollection = database.collection("requests");
 
   const request = {
-    userId: ObjectId(userId), // Store user ID
+    userId: new ObjectId(userId), // Store user ID
     title,
     type,
     description,
