@@ -123,7 +123,10 @@ async function getAllRequests() {
     const requests = await requestsCollection.find({}).toArray();
     for (let i = 0; i < requests.length; i++) {
       const request = requests[i];
-      console.log(`Request ${i + 1}: ${request.title}`);
+      const db = client.db(dbName);
+      const requestsCollection = db.collection(collectionName);
+      const user = await requestsCollection.findOne({ _id: request.userId });
+      requests[i].user = user;
     }
     return requests;
   } catch (error) {

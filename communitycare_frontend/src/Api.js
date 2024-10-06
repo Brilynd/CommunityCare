@@ -49,3 +49,14 @@ export const addRequestHelp = async (userId, title, type, description, financial
         return null;
     }
 }
+
+export const getAllRequest = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/requests`);
+        console.log(response);
+        return response.data.requests;
+    } catch (error) {
+        console.error("Error getting all requests:", error);
+        return null;
+    }
+}

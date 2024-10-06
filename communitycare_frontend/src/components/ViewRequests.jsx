@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ViewRequests.css";
 import Navbar from "./Navbar";
 import axios from "axios"; // For fetching data from the backend
-
+import { getAllRequest } from "../Api";
 const ViewRequests = () => {
   const [requests, setRequests] = useState([]);
 
@@ -10,8 +10,10 @@ const ViewRequests = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await axios.get("/api/requests"); // Adjust the URL to match your backend route
-        setRequests(response.data);
+        const response = await getAllRequest();
+        console.log(await response);
+        setRequests(await response);
+
       } catch (error) {
         console.error("Error fetching requests:", error);
       }
