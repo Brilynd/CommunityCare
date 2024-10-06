@@ -1,69 +1,113 @@
-.navbar {
+/* Navbar.css */
+
+.navbar-container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    background-color: #FFFFFF20;
     padding: 10px 20px;
-}
-.secondaryLogoTxt{
+    background-color: rgba(255, 255, 255, 0.2); /* Set background transparency */
+  }
+  .active{
+    color: #FFF !important;
+
+  }
+  
+  .logo-container {
     display: flex;
-    margin: 0;
-}
-.primaryLogoTxt{
-    display: flex;
-}
-.logo-container{
-    display: flex;
-    vertical-align: middle;
-    align-self: center;
     align-items: center;
-}
-.hamburger {
+    color: #fff;
+  }
+  
+  .primaryLogoTxt {
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  .secondaryLogoTxt {
+    font-size: 16;
+    font-weight: 400;
+  }
+  
+  .navbar {
+    position: relative;
+  }
+  
+  .hamburger {
     background: none;
     border: none;
-    cursor: pointer;
     color: #fff;
     font-size: 24px;
-    display: none; /* Hide the hamburger on larger screens */
-}
-
-.links {
+    cursor: pointer;
+    display: none;
+  }
+  
+  .links {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.link {
-    color: #fff;
+  }
+  
+  .link {
+    opacity: 1;
+    position: relative;
+    color: rgba(255, 255, 255, .5);
     text-decoration: none;
     margin-left: 20px;
-    display: flex;
-    align-items: center;
-    position: relative; /* Necessary for ::after pseudo-element */
-}
-
-.icon {
-    margin-right: 8px;
-    font-size: 20px;
-    color: white;
-}
-
-.nav-link {
+    font-weight: 500;
+    padding: 10px;
+  }
+  p{
+    margin:0;
+  }
+  .nav-link {
     position: relative;
-    padding-bottom: 5px;
-}
-
-.nav-link::after {
+  }
+  
+  .nav-link:hover {
+    color: #FFF;
+  }
+  
+  /* Hover effect with sliding underline */
+  .nav-link::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #fff; /* or any color you'd like */
-    transition: width 0.3s ease; /* Duration and ease of transition */
-}
-
-.nav-link:hover::after {
-    width: 100%; /* Expand the line from left to right on hover */
-}
+    background-color: #FFF;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block; /* Show hamburger icon on mobile */
+    }
+  
+    .links {
+      display: none; /* Hide links initially */
+      flex-direction: column;
+      width: 100%;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      z-index: 100;
+    }
+  
+    .links.show {
+      display: flex; /* Show links when menu is open */
+    }
+  
+    .link {
+      margin-left: 0;
+      padding: 15px;
+      text-align: center;
+    }
+  }
+  

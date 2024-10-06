@@ -3,10 +3,12 @@ import JumboTron from "./JumboTron"
 import SignupPopup from "./SignUp"
 import SignIn from "./SignIn"
 import Navbar from "./Navbar"
+import SupportUs from "./SupportUs"
 import {useState} from "react"
 const Home = () =>{
 const [signUpPopup, setSignUp] = useState(false)
 const [signInPopup, setSignIn] = useState(false)
+const [isSignedIn, setIsSignedIn] = useState(false)
 const toggleSignInPopup = () => {
     setSignIn(!signInPopup)
 }
@@ -14,9 +16,10 @@ const toggleSignUpPopup = () => {
     setSignUp(!signUpPopup)
 }
 return(
-    <div className='main'>
-        <Navbar toggleSignUpPopup={toggleSignUpPopup} toggleSignInPopup={toggleSignInPopup}/>
-        <JumboTron toggleSignIn={toggleSignInPopup}/>
+    <div>
+        <Navbar toggleSignUpPopup={toggleSignUpPopup} toggleSignInPopup={toggleSignInPopup} currSelected={"Home"}/>
+        <JumboTron toggleSignIn={toggleSignInPopup} isSignedIn={isSignedIn}/>
+        <SupportUs/>
         {signUpPopup && <SignupPopup toggleSignUpPopup={toggleSignUpPopup}/>}
         {signInPopup && <SignIn toggleSignInPopup={toggleSignInPopup}/>}
     </div>
