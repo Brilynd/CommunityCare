@@ -74,6 +74,7 @@ const ViewRequests = () => {
                     key={index}
                     position={{ lat: request.latitude, lng: request.longitude }}
                     title={request.title}
+                    onClick={() => setSelectedRequest(request)} // Handle marker click
                   />
                 ))}
               </GoogleMap>
@@ -89,7 +90,7 @@ const ViewRequests = () => {
                 <div
                   className="request-card"
                   key={index}
-                  onClick={() => setSelectedRequest(request)}
+                  onClick={() => setSelectedRequest(request)} // Handle request card click
                 >
                   <div className="request-title">
                     <strong>Request Title:</strong> {request.title}
