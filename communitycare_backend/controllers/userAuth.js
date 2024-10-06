@@ -87,7 +87,7 @@ async function addRequestHelp(
   financialAssistance
 ) {
   await client.connect();
-  const database = client.db("registerInfo");
+  const db = client.db(dbName);
   const requestsCollection = database.collection("requests");
 
   const request = {
@@ -103,8 +103,28 @@ async function addRequestHelp(
   const result = await requestsCollection.insertOne(request);
   return result.insertedId;
 }
+
+// Fetch all requests
+async function getAllRequests() {
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const requestsCollection = db.collection("requests"); // Ensure this matches your requests collection name
+
+    // Fetch all requests
+    const requests = await requestsCollection.find({}).toArray();
+
+    return requests;
+  } catch (error) {
+    console.error("Error fetching requests:", error);
+  } finally {
+    await client.close();
+  }
+}
+
 module.exports = {
   addUser,
   loginUser,
-  addRequestHelp, // Export the new function
+  addRequestHelp,
+  getAllRequests, // Export the new function
 };
