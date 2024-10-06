@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./SignUp.css";
+import {HeartHandshake} from "lucide-react";
 
-const SignupPopup = ({toggleSignUpPopup}) => {
+const SignupPopup = ({toggleSignInPopup, toggleSignUpPopup}) => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
@@ -47,11 +48,14 @@ const SignupPopup = ({toggleSignUpPopup}) => {
   return (
     <>
         <div className="popup-overlay">
-          <div className="popup-container">
+          <div className="popup-container-signup">
             <button className="close-btn" onClick={toggleSignUpPopup}>
               &times;
             </button>
-            <h2>Sign Up</h2>
+            <div className="header">
+              <h1 className="primaryLogoTxt">Community<p className="secondaryLogoTxt">Care</p></h1>
+              <HeartHandshake color="white" size="40" />
+            </div>
             <form onSubmit={handleSubmit}>
               <input type="text" placeholder="First Name" required />
               <input type="text" placeholder="Last Name" required />
@@ -70,6 +74,18 @@ const SignupPopup = ({toggleSignUpPopup}) => {
               <button type="submit" className="signup-btn">
                 Sign Up
               </button>
+              <div className='signin'>
+                <span>Already have an account? </span>
+                <span
+                    className="signin-here"
+                    onClick={() => {
+                      toggleSignInPopup();
+                      toggleSignUpPopup();
+                    }}
+                >
+              Sign In
+            </span>
+              </div>
             </form>
           </div>
         </div>
