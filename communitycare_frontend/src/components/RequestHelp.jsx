@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './RequestHelp.css'; // Import the updated CSS file
+import './RequestHelp.css';
 import Navbar from './Navbar';
 const RequestHelp = () => {
     const [title, setTitle] = useState('');
@@ -10,7 +10,6 @@ const RequestHelp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission (e.g., API call)
         console.log({
             title,
             typeOfRequest,
@@ -23,6 +22,7 @@ const RequestHelp = () => {
     return (
         <React.Fragment>
             <Navbar currSelected={"RequestHelp"}/>
+            // ADD POP UP FUNCTIONALITY
         <div className="request-help-container">
             <h2 className="header">Submit a Request for Assistance</h2>
             <form onSubmit={handleSubmit} className="request-form">
