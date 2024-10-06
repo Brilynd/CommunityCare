@@ -6,6 +6,7 @@ import Navbar from "./Navbar"
 import SupportUs from "./SupportUs"
 import {useState} from "react"
 import InformationDisplay from "./InformationDisplay"
+
 const Home = () =>{
 const [signUpPopup, setSignUp] = useState(false)
 const [signInPopup, setSignIn] = useState(false)
