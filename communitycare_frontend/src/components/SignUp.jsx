@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SignUp.css";
 import {HeartHandshake} from "lucide-react";
-
+import { signUpUser } from "../Api";
 const SignupPopup = ({toggleSignInPopup, toggleSignUpPopup}) => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");

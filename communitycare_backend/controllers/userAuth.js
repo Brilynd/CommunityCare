@@ -38,7 +38,7 @@ async function addUser(username, password) {
     });
 
     console.log("User added successfully:", result);
-    return true;
+    return result._id;
   } catch (error) {
     console.error("Error adding user:", error);
   } finally {
