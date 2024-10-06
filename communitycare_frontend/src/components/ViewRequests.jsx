@@ -3,6 +3,7 @@ import "./ViewRequests.css";
 import Navbar from "./Navbar";
 import axios from "axios"; // For fetching data from the backend
 import { getAllRequest } from "../Api";
+
 const ViewRequests = () => {
   const [requests, setRequests] = useState([]);
 
@@ -13,7 +14,6 @@ const ViewRequests = () => {
         const response = await getAllRequest();
         console.log(await response);
         setRequests(await response);
-
       } catch (error) {
         console.error("Error fetching requests:", error);
       }
@@ -41,7 +41,7 @@ const ViewRequests = () => {
             {requests.length === 0 ? (
               <p>No requests available at the moment.</p>
             ) : (
-              requests.map((request, index) => (
+              requests.slice(0, 3).map((request, index) => (
                 <div className="request-card" key={index}>
                   <div className="request-title">{request.title}</div>
                   <div className="request-type">
