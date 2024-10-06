@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:5001';
+const API_URL = 'https://communitycare.onrender.com';
 
 export const loginUser = async (username, password) => {
     try {
