@@ -55,12 +55,11 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 200px; /* Increase the height of each request card */
 }
 
 .request-title {
   font-weight: bold;
-  font-size: 1.4em; /* Slightly larger font */
+  font-size: 1.2em;
   margin-bottom: 10px;
   color: #333;
 }
@@ -80,9 +79,6 @@
 .request-description {
   margin-top: 10px;
   color: #555;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* Fade into ... */
 }
 
 /* Label Styling */

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./ViewRequests.css";
 import Navbar from "./Navbar";
 import { getAllRequest } from "../Api";
-
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const ViewRequests = () => {
@@ -79,7 +78,7 @@ const ViewRequests = () => {
             {requests.length === 0 ? (
               <p>No requests available at the moment.</p>
             ) : (
-              requests.slice(0, 3).map((request, index) => (
+              requests.map((request, index) => (
                 <div className="request-card" key={index}>
                   <div className="request-title">
                     <strong>Request Title:</strong> {request.title}
