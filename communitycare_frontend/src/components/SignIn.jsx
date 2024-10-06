@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./SignIn.css";
 import {HeartHandshake} from "lucide-react";
 
@@ -60,6 +61,14 @@ const SignIn = ({signInPopup,toggleSignInPopup}) => {
                 Sign In
               </button>
             </form>
+
+            <div className='signup'>
+              <span> Don't have an account? </span>
+              {/* Use Link to navigate to SignUp */}
+              <Link to="/signup" className="signup-here">
+                Sign Up
+              </Link>
+            </div>
           </div>
         </div>
     </>

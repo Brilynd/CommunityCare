@@ -28,13 +28,13 @@ const Navbar = ({toggleSignUpPopup,toggleSignInPopup}) => {
         <Link to="/" className="link nav-link" onClick={toggleMobileMenu}>
           Home
         </Link>
-        <Link to="/about" className="link nav-link" onClick={toggleMobileMenu}>
+        <Link to="/request-help" className="link nav-link" onClick={toggleMobileMenu}>
           Request Help
         </Link>
-        <Link to="/contact" className="link nav-link" onClick={toggleMobileMenu}>
+        <Link to="/view-requests" className="link nav-link" onClick={toggleMobileMenu}>
           View Requests
         </Link>
-        <Link to="/about" className="link nav-link" onClick={toggleMobileMenu}>
+        <Link to="/profile" className="link nav-link" onClick={toggleMobileMenu}>
           Profile
         </Link>
         {isLoggedIn ? (

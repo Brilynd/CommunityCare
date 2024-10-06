@@ -103,3 +103,18 @@ input:focus {
   margin-bottom: 10px;
   text-align: left;
 }
+
+.signup{
+  padding: 19px;
+  font-size: 15px;
+  color: #02353C;
+}
+
+.signup-here{
+  color: white;
+}
+
+.signup-here:hover{
+  color: #02353C;
+}
+
