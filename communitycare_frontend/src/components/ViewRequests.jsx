@@ -1,23 +1,38 @@
 import React, { useEffect, useState } from "react";
 import "./ViewRequests.css";
 import Navbar from "./Navbar";
-import axios from "axios"; // For fetching data from the backend
 import { getAllRequest } from "../Api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+
 const ViewRequests = () => {
   const [requests, setRequests] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 40.7128, lng: -74.0060 }); // Default center
+  const [userLocation, setUserLocation] = useState(null);
 
-  // Fetching all requests from your backend
   useEffect(() => {
+    const fetchUserLocation = async () => {
+      try {
+        const response = await fetch(`https://ipapi.co/json/`);
+        const data = await response.json();
+
+        const { latitude, longitude } = data;
+        setUserLocation({ lat: latitude, lng: longitude });
+        setMapCenter({ lat: latitude, lng: longitude });
+      } catch (error) {
+        console.error("Error fetching user location:", error);
+      }
+    };
+
     const fetchRequests = async () => {
       try {
         const response = await getAllRequest();
-        console.log(await response);
         setRequests(await response);
-
       } catch (error) {
         console.error("Error fetching requests:", error);
       }
     };
+
+    fetchUserLocation();
     fetchRequests();
   }, []);
 
@@ -27,13 +42,35 @@ const ViewRequests = () => {
 
       <div className="view-requests-container">
         <div className="map-and-requests">
-          {/* Section Title */}
           <h2 className="section-title">See Who Needs Help Near You</h2>
 
-          {/* Dedicated empty space for the map */}
+          {/* Google Maps Integration */}
           <div className="map-container">
-            {/* Add your map component or integration here */}
-            <p>This is where the map will go.</p>
+            <LoadScript googleMapsApiKey={"AIzaSyDzpbD_LBjyzk7_jQ00DjSF4_r9J5M8MAk"}>
+              <GoogleMap
+                mapContainerStyle={{ width: "100%", height: "100%" }}
+                center={mapCenter}
+                zoom={12}
+              >
+                {userLocation && (
+                  <Marker
+                    position={userLocation}
+                    icon={{
+                      url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                    }}
+                    title="Your Location"
+                  />
+                )}
+
+                {requests.map((request, index) => (
+                  <Marker
+                    key={index}
+                    position={{ lat: request.latitude, lng: request.longitude }}
+                    title={request.title}
+                  />
+                ))}
+              </GoogleMap>
+            </LoadScript>
           </div>
 
           {/* Requests Section */}
@@ -43,25 +80,14 @@ const ViewRequests = () => {
             ) : (
               requests.map((request, index) => (
                 <div className="request-card" key={index}>
-                  <div className="request-title">{request.title}</div>
+                  <div className="request-title">
+                    <strong>Request Title:</strong> {request.title}
+                  </div>
                   <div className="request-type">
-                    {request.type === "physical" && (
-                      <span className="icon-physical">🏋️</span>
-                    )}
-                    {request.type === "donation" && (
-                      <span className="icon-donation">💸</span>
-                    )}
-                    {request.type === "both" && (
-                      <>
-                        <span className="icon-physical">🏋️</span>
-                        <span className="icon-donation">💸</span>
-                      </>
-                    )}
+                    <strong>Type of Request:</strong> {request.type}
                   </div>
                   <div className="request-description">
-                    {request.description.length > 20
-                      ? `${request.description.slice(0, 20)}...`
-                      : request.description}
+                    <strong>Description of Request:</strong> {request.description}
                   </div>
                 </div>
               ))

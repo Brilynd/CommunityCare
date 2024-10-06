@@ -1,7 +1,5 @@
-/* ViewRequests.css */
-
 .view-requests-container {
-  background-color: #d2e0dd; /* Main container background */
+  background-color: #d2e0dd;
   padding: 20px;
   border-radius: 10px;
   max-width: 1200px;
@@ -22,7 +20,7 @@
 
 /* Section Title */
 .section-title {
-  font-family: "Roboto", sans-serif; /* Roboto font */
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
@@ -34,8 +32,8 @@
 
 .map-container {
   width: 100%;
-  height: 400px; /* Adjust height as needed */
-  background-color: #e0e0e0; /* Placeholder background */
+  height: 400px;
+  background-color: #e0e0e0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,18 +43,16 @@
 
 .requests-list {
   width: 100%;
-  max-height: 600px; /* Set max height for scrolling */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Space between the cards */
+  max-height: 600px;
   overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .request-card {
-  width: 30%;
-  background-color: #ffffff; /* White background for each box */
-  padding: 15px;
-  margin: 10px;
+  background-color: #ffffff;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -65,19 +61,45 @@
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 10px;
+  color: #333;
 }
 
 .request-type {
   margin-top: 5px;
+  font-weight: bold;
+  color: #666;
 }
 
 .icon-physical,
 .icon-donation {
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin-right: 5px;
 }
 
 .request-description {
   margin-top: 10px;
   color: #555;
+}
+
+/* Label Styling */
+.request-card strong {
+  color: #444;
+  font-weight: 600;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  .requests-list {
+    grid-template-columns: 1fr;
+  }
+
+  .request-card {
+    width: 90%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .requests-list {
+    grid-template-columns: repeat(2, 1fr); /* 2-column layout for tablets */
+  }
 }
