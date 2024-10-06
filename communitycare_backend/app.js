@@ -17,15 +17,15 @@ app.get("/", (req, res) => {
 });
 // Route to register a user
 app.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  const { firstName, lastName,email,password,phoneNumber } = req.body;
   console.log(req.body);
-  if (!username || !password) {
+  if (!email || !password || !firstName || !lastName || !phoneNumber) {
     return res
       .status(400)
       .json({ success: false, message: "Username and password are required" });
   }
 
-  const result = await userAuth.addUser(username, password);
+  const result = await userAuth.addUser(firstName, lastName,email,password,phoneNumber);
   return res.status(result ? 201 : 400).json(result);
 });
 app.post("/login", async (req, res) => {

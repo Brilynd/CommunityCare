@@ -14,16 +14,16 @@ const client = new MongoClient(uri, {
 
 
 // Add user function
-async function addUser(username, password) {
+async function addUser(firstName, lastName,email,password,phoneNumber) {
   try {
     await client.connect();
     const db = client.db(dbName);
     const usersCollection = db.collection(collectionName);
 
     // Check if the username already exists
-    const existingUser = await usersCollection.findOne({ username });
+    const existingUser = await usersCollection.findOne({ email });
     if (existingUser) {
-      console.log("Username already exists.");
+      console.log("Email already exists.");
       return false;
     }
 
@@ -33,12 +33,15 @@ async function addUser(username, password) {
 
     // Store the new user's data in MongoDB
     const result = await usersCollection.insertOne({
-      username,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
       password: hashedPassword,
     });
 
     console.log("User added successfully:", result);
-    return result._id;
+    return result.insertedId;
   } catch (error) {
     console.error("Error adding user:", error);
   } finally {
