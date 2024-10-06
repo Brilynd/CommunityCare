@@ -104,3 +104,116 @@
 .request-help-container:hover {
     box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.15); /* Elevate effect on hover */
 }
+
+/* Add to RequestHelp.css */
+
+.request-form {
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+    position: relative; /* Needed for absolute positioning of the overlay */
+}
+
+.success-animation {
+    animation: success 0.5s forwards;
+}
+
+.error-animation {
+    animation: error 0.5s forwards;
+}
+
+.success-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 255, 0, 0.7); /* Light green background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Make sure it's on top */
+}
+
+.checkmark {
+    font-size: 3rem; /* Size of the checkmark */
+}
+
+.error-message {
+    color: red; /* Red text for error messages */
+    margin-top: 10px;
+}
+
+/* Add to RequestHelp.css */
+
+.request-form {
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.success-animation {
+    animation: success 0.5s forwards;
+}
+
+.error-animation {
+    animation: error 0.5s forwards;
+}
+
+/* Styling for the success overlay */
+.success-overlay {
+    position: fixed; /* Fixed positioning to cover the whole viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 128, 0, 0.8); /* Dark green background with some transparency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+}
+
+/* Enhanced styling for the checkmark */
+.checkmark {
+    font-size: 5rem; /* Larger checkmark */
+    color: white; /* White color for contrast */
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
+}
+
+@keyframes success {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Slightly bigger scale for impact */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes error {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* New fade-in effect for checkmark */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
