@@ -1,11 +1,11 @@
 /* Overlay for the popup */
-.popup-overlay {
+.signin-popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
 }
 
 /* Container for the popup */
-.popup-container {
+.signin-popup-container {
   background-color: #489283;
   padding: 30px;
   border-radius: 10px;
@@ -26,7 +26,7 @@
   align-items: center;
 }
 
-.close-btn {
+.signin-close-btn {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -38,34 +38,38 @@
   transition: color 0.3s;
 }
 
-.close-btn:hover {
+.signin-close-btn:hover {
   color: #ff0000;
 }
 
-.header{
+.signin-header {
   display: flex;
   align-items: center;
 }
 
-.secondaryLogoTxt{
+.signin-secondaryLogoTxt {
   color: white;
   font-size: 24px;
-}
-.primaryLogoTxt{
-  color: white;
-  font-size: 28px;
+  display: inline;
 }
 
-form {
+.signin-primaryLogoTxt {
+  color: white;
+  font-size: 28px;
+  display: inline;
+}
+
+.signin-form {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-input {
+.signin-input{
   margin-bottom: 15px;
   padding: 12px;
   font-size: 16px;
+  background-color: #FFFFFF; /* Semi-transparent white */
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
@@ -73,13 +77,18 @@ input {
   transition: border-color 0.3s;
 }
 
-input:focus {
+ input[type="text"],
+ input[type="password"]{
+  background-color: #FFFFFF85;
+}
+
+.signin-input:focus {
   outline: none;
   border: 2px solid black;
 }
 
 .signin-btn {
-  background-color: #02353C;
+  background-color: #489283;
   color: white;
   padding: 12px;
   font-size: 28px;
@@ -91,11 +100,11 @@ input:focus {
 }
 
 .signin-btn:hover {
-  background-color: #FFFFFF85;
+  background-color: #FFFFFF85; /* Semi-transparent white */
 }
 
 /* Styling for error messages */
-.error-message {
+.signin-error-message {
   color: darkred;
   font-size: 16px;
   font-weight: bold;
@@ -104,17 +113,16 @@ input:focus {
   text-align: left;
 }
 
-.signup{
+.signin-signup {
   padding: 19px;
   font-size: 15px;
   color: #02353C;
 }
 
-.signup-here{
+.signin-signup-here {
   color: white;
 }
 
-.signup-here:hover{
+.signin-signup-here:hover {
   color: #02353C;
 }
-

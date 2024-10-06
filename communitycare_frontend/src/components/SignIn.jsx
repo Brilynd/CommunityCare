@@ -48,14 +48,14 @@ const SignIn = ({ toggleSignInPopup, toggleSignUpPopup }) => {
 
   return (
     <>
-      <div className="popup-overlay">
-        <div className="popup-container">
-          <button className="close-btn" onClick={toggleSignInPopup}>
+      <div className="signin-popup-overlay">
+        <div className="signin-popup-container">
+          <button className="signin-close-btn" onClick={toggleSignInPopup}>
             &times;
           </button>
-          <div className="header">
-            <h1 className="primaryLogoTxt">
-              Community<p className="secondaryLogoTxt">Care</p>
+          <div className="signin-header">
+            <h1 className="signin-primaryLogoTxt">
+              Community<p className="signin-secondaryLogoTxt">Care</p>
             </h1>
             <HeartHandshake color="white" size="40" />
           </div>
@@ -79,10 +79,10 @@ const SignIn = ({ toggleSignInPopup, toggleSignUpPopup }) => {
             <button type="submit" className="signin-btn">Sign In</button>
           </form>
 
-          <div className='signup'>
+          <div className='signin-signup'>
             <span>Don't have an account? </span>
             <span
-              className="signup-here"
+              className="signin-signup-here"
               onClick={() => {
                 toggleSignInPopup();
                 toggleSignUpPopup();
