@@ -1,6 +1,6 @@
-require('dotenv').config(); // Load environment variables from .env
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const bcrypt = require('bcrypt'); // For password hashing
+require("dotenv").config(); // Load environment variables from .env
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const bcrypt = require("bcrypt"); // For password hashing
 
 // Get MongoDB URI and DB name from environment variables
 const uri = process.env.MONGODB_URI;
@@ -12,11 +12,11 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
 });
 
 // Add user function
- async function addUser(username, password) {
+async function addUser(username, password) {
   try {
     await client.connect();
     const db = client.db(dbName);
@@ -36,7 +36,7 @@ const client = new MongoClient(uri, {
     // Store the new user's data in MongoDB
     const result = await usersCollection.insertOne({
       username,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     console.log("User added successfully:", result);
@@ -49,7 +49,7 @@ const client = new MongoClient(uri, {
 }
 
 // Login user function
- async function loginUser(username, password) {
+async function loginUser(username, password) {
   try {
     await client.connect();
     const db = client.db(dbName);
@@ -77,8 +77,34 @@ const client = new MongoClient(uri, {
     await client.close();
   }
 }
-module.exports = { addUser, loginUser };
-// Example usage:
-// addUser('testUser', 'password123').then(result => console.log(result));
-// loginUser('testUser', 'password123').then(result => console.log(result));
 
+async function addRequestHelp(
+  userId,
+  title,
+  type,
+  description,
+  address,
+  financialAssistance
+) {
+  await connectDB();
+  const database = client.db("your_database_name");
+  const requestsCollection = database.collection("requests");
+
+  const request = {
+    userId: ObjectId(userId), // Store user ID
+    title,
+    type,
+    description,
+    address,
+    financialAssistance,
+    createdAt: new Date(),
+  };
+
+  const result = await requestsCollection.insertOne(request);
+  return result.insertedId;
+}
+module.exports = {
+  addUser,
+  loginUser,
+  addRequestHelp, // Export the new function
+};

@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Transparent black background */
+  background: white; /* Transparent black background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,10 +14,11 @@
 
 /* Container for the popup */
 .popup-container {
-  background-color: #fff;
+  background-color: #489283;
   padding: 30px;
   border-radius: 10px;
-  width: 400px;
+  width: 500px;
+  height: 400px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   display: flex;
@@ -41,11 +42,18 @@
   color: #ff0000;
 }
 
-h2 {
+.header{
+  display: flex;
+  align-items: center;
+}
+
+.secondaryLogoTxt{
+  color: white;
+  font-size: 24px;
+}
+.primaryLogoTxt{
+  color: white;
   font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 form {
@@ -67,14 +75,15 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #007bff;
+  border: 2px solid black;
 }
 
 .signin-btn {
-  background-color: #007bff;
+  background-color: #02353C;
   color: white;
   padding: 12px;
-  font-size: 18px;
+  font-size: 28px;
+  font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -82,14 +91,30 @@ input:focus {
 }
 
 .signin-btn:hover {
-  background-color: #0056b3;
+  background-color: #FFFFFF85;
 }
 
 /* Styling for error messages */
 .error-message {
-  color: red;
-  font-size: 14px;
+  color: darkred;
+  font-size: 16px;
+  font-weight: bold;
   margin-top: -10px;
   margin-bottom: 10px;
   text-align: left;
 }
+
+.signup{
+  padding: 19px;
+  font-size: 15px;
+  color: #02353C;
+}
+
+.signup-here{
+  color: white;
+}
+
+.signup-here:hover{
+  color: #02353C;
+}
+

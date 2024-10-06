@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./SignIn.css";
+import {HeartHandshake} from "lucide-react";
 
 const SignIn = ({signInPopup,toggleSignInPopup}) => {
   const [password, setPassword] = useState("");
@@ -39,7 +41,10 @@ const SignIn = ({signInPopup,toggleSignInPopup}) => {
             <button className="close-btn" onClick={toggleSignInPopup}>
               &times;
             </button>
-            <h2>Sign In</h2>
+            <div className="header">
+            <h1 className='primaryLogoTxt'>Community<p className='secondaryLogoTxt'>Care</p></h1>
+            <HeartHandshake color='white' size="40" />
+            </div>
             <form onSubmit={handleSubmit}>
               <input type="email" placeholder="Email Address" required />
               <input
@@ -56,6 +61,14 @@ const SignIn = ({signInPopup,toggleSignInPopup}) => {
                 Sign In
               </button>
             </form>
+
+            <div className='signup'>
+              <span> Don't have an account? </span>
+              {/* Use Link to navigate to SignUp */}
+              <Link to="/signup" className="signup-here">
+                Sign Up
+              </Link>
+            </div>
           </div>
         </div>
     </>

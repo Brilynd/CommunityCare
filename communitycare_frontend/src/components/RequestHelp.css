@@ -1,0 +1,87 @@
+/* Page background */
+body {
+    background-color: #489283;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Form container */
+.request-help-container {
+    background-color: white;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+    color: #02353C;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.request-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 16px;
+}
+
+/* Labels */
+label {
+    color: #02353C;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Text inputs and text areas */
+input[type="text"],
+textarea {
+    background-color: #02353C;
+    color: white;
+    padding: 10px;
+    border: 3px solid #02353C;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Textarea specific styles */
+textarea {
+    min-height: 100px;
+}
+
+/* Toggle section */
+.toggle {
+    display: flex;
+    align-items: center;
+}
+
+.toggle input {
+    margin-right: 10px;
+}
+
+/* Submit button */
+.submit-button {
+    background-color: #02353C;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: center; /* Center the button */
+    width: fit-content; /* Ensure button doesn't take up full width */
+}
+
+/* Submit button hover effect */
+.submit-button:hover {
+    background-color: #02353C75;
+}
