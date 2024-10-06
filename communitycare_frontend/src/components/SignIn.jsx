@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SignIn.css";
 import {HeartHandshake} from "lucide-react";
 import { loginUser } from "../Api";
-const SignIn = ({signInPopup,toggleSignInPopup}) => {
+const SignIn = ({toggleSignInPopup, toggleSignUpPopup}) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -65,6 +65,7 @@ const SignIn = ({signInPopup,toggleSignInPopup}) => {
                   className="signup-here"
                   onClick={() => {
                     toggleSignInPopup();
+                    toggleSignUpPopup();
                   }}
               >
               Sign Up
