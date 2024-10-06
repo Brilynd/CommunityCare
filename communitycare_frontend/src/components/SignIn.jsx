@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./SignIn.css";
-import { HeartHandshake } from "lucide-react";
-
-const SignIn = ({ signInPopup, toggleSignInPopup, toggleSignUpPopup }) => {
+import {HeartHandshake} from "lucide-react";
+import { loginUser } from "../Api";
+const SignIn = ({signInPopup,toggleSignInPopup}) => {
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const validatePassword = (password) => {
-    const minLength = 8;
+    const minLength = 1;
+
     if (password.length < minLength) {
       return `Password must be at least ${minLength} characters long.`;
     }
@@ -19,11 +21,15 @@ const SignIn = ({ signInPopup, toggleSignInPopup, toggleSignUpPopup }) => {
     setPassword(newPassword);
     setPasswordError(validatePassword(newPassword));
   };
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (!passwordError) {
-      console.log("Sign In successful!");
+     const response = await loginUser(username, password);
+     console.log(response);
     } else {
       console.log("Fix the password error before submitting.");
     }
@@ -41,7 +47,7 @@ const SignIn = ({ signInPopup, toggleSignInPopup, toggleSignUpPopup }) => {
               <HeartHandshake color="white" size="40" />
             </div>
             <form onSubmit={handleSubmit}>
-              <input type="email" placeholder="Email Address" required />
+              <input type="text" placeholder="Email Address" required onChange={handleUsernameChange}/>
               <input
                   type="password"
                   placeholder="Password"
@@ -58,7 +64,6 @@ const SignIn = ({ signInPopup, toggleSignInPopup, toggleSignUpPopup }) => {
               <span
                   className="signup-here"
                   onClick={() => {
-                    toggleSignUpPopup();
                     toggleSignInPopup();
                   }}
               >
