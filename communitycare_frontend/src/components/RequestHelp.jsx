@@ -4,6 +4,7 @@ import './RequestHelp.css';
 import Navbar from './Navbar';
 import SignupPopup from './SignUp';
 import SignIn from './SignIn';
+import EmergencyContactsPopup from './EmergencyContactsPopup';
 import { addRequestHelp } from '../Api';
 import { useCookies } from 'react-cookie';
 
@@ -22,6 +23,7 @@ const RequestHelp = () => {
     
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [showEmergencyPopup, setShowEmergencyPopup] = useState(false);
 
     const toggleSignInPopup = () => {
         setSignIn(!signInPopup);
@@ -36,10 +38,15 @@ const RequestHelp = () => {
         return userCookie;
     };
 
+    const handleRequestTypeChange = (e) => {
+        setTypeOfRequest(e.target.value);
+        setShowEmergencyPopup(true);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); // Start loading animation
-        setError(false); // Reset error state
+        setLoading(true); 
+        setError(false); 
 
         const userId = getUserIdFromCookie();
 
@@ -53,13 +60,16 @@ const RequestHelp = () => {
                 latitude,
                 longitude
             );
-            // If successful, you can reset form or show a success message
             setLoading(false);
         } catch (err) {
             console.error(err);
-            setError(true); // Set error state if there's an issue
+            setError(true); 
             setLoading(false);
         }
+    };
+
+    const handleCloseEmergencyPopup = () => {
+        setShowEmergencyPopup(false);
     };
 
     return (
@@ -86,7 +96,7 @@ const RequestHelp = () => {
                         <label>Type of Request</label>
                         <select
                             value={typeOfRequest}
-                            onChange={(e) => setTypeOfRequest(e.target.value)}
+                            onChange={handleRequestTypeChange}
                             required
                         >
                             <option value="" disabled>Select the type of assistance you need</option>
@@ -169,6 +179,12 @@ const RequestHelp = () => {
                 <SignIn
                     toggleSignInPopup={toggleSignInPopup}
                     toggleSignUpPopup={toggleSignUpPopup}
+                />
+            )}
+            {showEmergencyPopup && (
+                <EmergencyContactsPopup
+                    typeOfRequest={typeOfRequest}
+                    onClose={handleCloseEmergencyPopup}
                 />
             )}
         </React.Fragment>
