@@ -59,14 +59,16 @@ const SignIn = ({ toggleSignInPopup, toggleSignUpPopup }) => {
             </h1>
             <HeartHandshake color="white" size="40" />
           </div>
-          <form onSubmit={handleSubmit}>
+          <form className="signin-form" onSubmit={handleSubmit}>
             <input
+              className='signin-input'
               type="text"
               placeholder="Email Address"
               required
               onChange={handleUsernameChange}
             />
             <input
+              className='signin-input'
               type="password"
               placeholder="Password"
               value={password}

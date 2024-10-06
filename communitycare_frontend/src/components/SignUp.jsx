@@ -68,10 +68,11 @@ const SignupPopup = ({ toggleSignInPopup, toggleSignUpPopup }) => {
             <HeartHandshake color="white" size="40" />
           </div>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="First Name" required onChange={(e) => { setFirstName(e.target.value) }} />
-            <input type="text" placeholder="Last Name" required onChange={(e) => { setLastName(e.target.value) }} />
-            <input type="email" placeholder="Email Address" required onChange={(e) => { setEmail(e.target.value) }} />
+            <input className='signup-input' type="text" placeholder="First Name" required onChange={(e) => { setFirstName(e.target.value) }} />
+            <input className='signup-input' type="text" placeholder="Last Name" required onChange={(e) => { setLastName(e.target.value) }} />
+            <input className='signup-input' type="email" placeholder="Email Address" required onChange={(e) => { setEmail(e.target.value) }} />
             <input
+              className='signup-input'
               type="password"
               placeholder="Password"
               value={password}
@@ -81,7 +82,7 @@ const SignupPopup = ({ toggleSignInPopup, toggleSignUpPopup }) => {
             {passwordError && (
               <p className="error-message">{passwordError}</p>
             )}
-            <input type="tel" placeholder="Phone Number" required onChange={(e) => { setPhoneNumber(e.target.value) }} />
+            <input className='signup-input' type="tel" placeholder="Phone Number" required onChange={(e) => { setPhoneNumber(e.target.value) }} />
             <button type="submit" className="signup-btn">
               Sign Up
             </button>

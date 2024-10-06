@@ -65,21 +65,16 @@
   flex-direction: column;
 }
 
-.signin-input{
+.signin-input {
   margin-bottom: 15px;
   padding: 12px;
   font-size: 16px;
-  background-color: #FFFFFF; /* Semi-transparent white */
+  background-color: #FFFFFF85; /* Semi-transparent white */
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
   transition: border-color 0.3s;
-}
-
- input[type="text"],
- input[type="password"]{
-  background-color: #FFFFFF85;
 }
 
 .signin-input:focus {
@@ -88,7 +83,7 @@
 }
 
 .signin-btn {
-  background-color: #489283;
+  background-color: #02353C;
   color: white;
   padding: 12px;
   font-size: 28px;
