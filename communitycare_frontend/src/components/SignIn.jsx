@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie"; // Import the useCookies hook
 import "./SignIn.css";
-import {HeartHandshake} from "lucide-react";
+import { HeartHandshake } from "lucide-react";
 import { loginUser } from "../Api";
-const SignIn = ({toggleSignInPopup, toggleSignUpPopup}) => {
+
+const SignIn = ({ toggleSignInPopup, toggleSignUpPopup }) => {
+  const [cookies, setCookie] = useCookies(["user"]); // Define cookie names
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -21,59 +24,76 @@ const SignIn = ({toggleSignInPopup, toggleSignUpPopup}) => {
     setPassword(newPassword);
     setPasswordError(validatePassword(newPassword));
   };
+
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!passwordError) {
-     const response = await loginUser(username, password);
-     console.log(response);
+      const response = await loginUser(username, password);
+      if (response) {
+        // Assuming response contains user data upon successful login
+        setCookie("user", response.data, { path: "/" }); // Set cookie with username
+        toggleSignInPopup();
+        console.log(response);
+      } else {
+        console.log("Login failed.");
+      }
     } else {
       console.log("Fix the password error before submitting.");
     }
   };
 
   return (
-      <>
-        <div className="popup-overlay">
-          <div className="popup-container">
-            <button className="close-btn" onClick={toggleSignInPopup}>
-              &times;
-            </button>
-            <div className="header">
-              <h1 className="primaryLogoTxt">Community<p className="secondaryLogoTxt">Care</p></h1>
-              <HeartHandshake color="white" size="40" />
-            </div>
-            <form onSubmit={handleSubmit}>
-              <input type="text" placeholder="Email Address" required onChange={handleUsernameChange}/>
-              <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  required
-              />
-              {passwordError && <p className="error-message">{passwordError}</p>}
-              <button type="submit" className="signin-btn">Sign In</button>
-            </form>
+    <>
+      <div className="popup-overlay">
+        <div className="popup-container">
+          <button className="close-btn" onClick={toggleSignInPopup}>
+            &times;
+          </button>
+          <div className="header">
+            <h1 className="primaryLogoTxt">
+              Community<p className="secondaryLogoTxt">Care</p>
+            </h1>
+            <HeartHandshake color="white" size="40" />
+          </div>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Email Address"
+              required
+              onChange={handleUsernameChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
+              required
+            />
+            {passwordError && (
+              <p className="error-message">{passwordError}</p>
+            )}
+            <button type="submit" className="signin-btn">Sign In</button>
+          </form>
 
-            <div className='signup'>
-              <span>Don't have an account? </span>
-              <span
-                  className="signup-here"
-                  onClick={() => {
-                    toggleSignInPopup();
-                    toggleSignUpPopup();
-                  }}
-              >
+          <div className='signup'>
+            <span>Don't have an account? </span>
+            <span
+              className="signup-here"
+              onClick={() => {
+                toggleSignInPopup();
+                toggleSignUpPopup();
+              }}
+            >
               Sign Up
             </span>
-            </div>
           </div>
         </div>
-      </>
+      </div>
+    </>
   );
 };
 
