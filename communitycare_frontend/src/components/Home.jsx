@@ -22,8 +22,8 @@ return(
         <JumboTron toggleSignIn={toggleSignInPopup} isSignedIn={isSignedIn}/>
         <SupportUs/>
         <InformationDisplay/>
-        {signUpPopup && <SignupPopup toggleSignUpPopup={toggleSignUpPopup}/>}
-        {signInPopup && <SignIn toggleSignInPopup={toggleSignInPopup}/>}
+        {signUpPopup && <SignupPopup toggleSignUpPopup={toggleSignUpPopup} />}
+        {signInPopup && (<SignIn toggleSignInPopup={toggleSignInPopup} toggleSignUpPopup={toggleSignUpPopup} />)}
     </div>
 )
 }
