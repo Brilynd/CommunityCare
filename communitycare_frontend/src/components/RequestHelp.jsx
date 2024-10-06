@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './RequestHelp.css'; // Import the updated CSS file
-
+import Navbar from './Navbar';
 const RequestHelp = () => {
     const [title, setTitle] = useState('');
     const [typeOfRequest, setTypeOfRequest] = useState('');
@@ -21,6 +21,8 @@ const RequestHelp = () => {
     };
 
     return (
+        <React.Fragment>
+            <Navbar currSelected={"RequestHelp"}/>
         <div className="request-help-container">
             <h2 className="header">Submit a Request for Assistance</h2>
             <form onSubmit={handleSubmit} className="request-form">
@@ -84,6 +86,7 @@ const RequestHelp = () => {
                 </button>
             </form>
         </div>
+        </React.Fragment>
     );
 };
 

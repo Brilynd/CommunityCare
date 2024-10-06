@@ -28,7 +28,7 @@ const Navbar = ({ toggleSignUpPopup, toggleSignInPopup,currSelected }) => {
           <Link to="/" className={currSelected=="Home"?"link nav-link active":"link nav-link"} onClick={toggleMobileMenu}>
             Home
           </Link>
-          <Link to="/request-help" className="link nav-link" onClick={toggleMobileMenu}>
+          <Link to="/request-help" className={currSelected=="RequestHelp"?"link nav-link active":"link nav-link"} onClick={toggleMobileMenu}>
             Request Help
           </Link>
           <Link to="/view-requests" className="link nav-link" onClick={toggleMobileMenu}>
