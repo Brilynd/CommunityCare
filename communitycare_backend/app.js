@@ -37,32 +37,37 @@ app.post("/login", async (req, res) => {
       .json({ success: false, message: "Username and password are required" });
   }
 
-  // Route to submit a request for help
-  app.post("/request-help", async (req, res) => {
-    const { userId, title, type, description, address, financialAssistance } =
-      req.body;
-    console.log(req.body);
-    if (!userId || !title || !type || !description || !address) {
-      return res
-        .status(400)
-        .json({ success: false, message: "All fields are required" });
-    }
-
-    const result = await userAuth.addRequestHelp(
-      userId,
-      title,
-      type,
-      description,
-      address,
-      financialAssistance
-    );
-    return res
-      .status(result ? 201 : 400)
-      .json({ success: !!result, requestId: result });
-  });
-
+  // Route to submit a request for hel
   const result = await userAuth.loginUser(username, password);
   return res.status(result ? 200 : 400).json(result);
+});
+app.post("/requestHelp", async (req, res) => {
+  const { userId, title, type, description, address, financialAssistance } =
+    req.body;
+  console.log(req.body);
+  if (!userId || !title || !type || !description || !address) {
+    return res
+      .status(400)
+      .json({ success: false, message: "All fields are required" });
+  }
+
+  const result = await userAuth.addRequestHelp(
+    userId,
+    title,
+    type,
+    description,
+    address,
+    financialAssistance
+  );
+  return res.status(result ? 201 : 400).json({
+    success: !!result,
+    requestId: result,
+    title: title,
+    type: type,
+    description: description,
+    address: address,
+    financialAssistance: financialAssistance,
+  });
 });
 // Start the server
 const PORT = process.env.PORT || 5000;
