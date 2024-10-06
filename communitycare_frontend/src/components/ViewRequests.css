@@ -1,0 +1,83 @@
+/* ViewRequests.css */
+
+.view-requests-container {
+  background-color: #d2e0dd; /* Main container background */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.map-and-requests {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Section Title */
+.section-title {
+  font-family: "Roboto", sans-serif; /* Roboto font */
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.map-container {
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+  background-color: #e0e0e0; /* Placeholder background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.requests-list {
+  width: 100%;
+  max-height: 600px; /* Set max height for scrolling */
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.request-card {
+  width: 30%;
+  background-color: #ffffff; /* White background for each box */
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.request-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.request-type {
+  margin-top: 5px;
+}
+
+.icon-physical,
+.icon-donation {
+  font-size: 1.5em;
+  margin-right: 5px;
+}
+
+.request-description {
+  margin-top: 10px;
+  color: #555;
+}
