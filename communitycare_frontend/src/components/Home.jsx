@@ -14,7 +14,7 @@ const toggleSignUpPopup = () => {
     setSignUp(!signUpPopup)
 }
 return(
-    <div>
+    <div className='main'>
         <Navbar toggleSignUpPopup={toggleSignUpPopup} toggleSignInPopup={toggleSignInPopup}/>
         <JumboTron toggleSignIn={toggleSignInPopup}/>
         {signUpPopup && <SignupPopup toggleSignUpPopup={toggleSignUpPopup}/>}

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #FFFFFF20;
     padding: 10px 20px;
 }
 .secondaryLogoTxt{
@@ -45,6 +45,7 @@
 .icon {
     margin-right: 8px;
     font-size: 20px;
+    color: white;
 }
 
 .nav-link {

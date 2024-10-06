@@ -17,7 +17,7 @@ const Navbar = ({toggleSignUpPopup,toggleSignInPopup}) => {
     <div style={{display:"flex"}}>
         <div className='logo-container'>
           <h1 className='primaryLogoTxt'>Community<p className='secondaryLogoTxt'>Care</p></h1>
-          <HeartHandshake size="50" />
+          <HeartHandshake className='icon' size="50" />
         </div>
 
     <nav className="navbar">
