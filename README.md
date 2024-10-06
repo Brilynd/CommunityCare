@@ -1,5 +1,6 @@
 # CommunityCare
 Columbia Divhacks 2024 - Tech for Social Good
+
 10/5-10/6
 
 This project aims to compete in the environment track. 
