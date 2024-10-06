@@ -6,14 +6,12 @@ const { ObjectId } = require("mongodb"); // or from mongoose if you're using it
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB;
 const collectionName = process.env.MONGODB_COLLECTION;
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  tlsInsecure: true, // Only for testing, not for production
 });
+
 
 // Add user function
 async function addUser(username, password) {
@@ -51,32 +49,37 @@ async function addUser(username, password) {
 // Login user function
 async function loginUser(username, password) {
   try {
-    await client.connect();
+    await client.connect(); // Connect to the MongoDB server
+    console.log(dbName);
     const db = client.db(dbName);
     const usersCollection = db.collection(collectionName);
 
-    // Find the user by username
+    console.log(`Fetching user with username: ${username}`);
     const user = await usersCollection.findOne({ username });
+
     if (!user) {
       console.log("User not found.");
       return false;
     }
 
-    // Compare the provided password with the stored hashed password
+    console.log("Comparing passwords...");
     const passwordMatch = await bcrypt.compare(password, user.password);
+
     if (passwordMatch) {
       console.log("Login successful!");
-      return user;
+      return user._id;
     } else {
       console.log("Incorrect password.");
       return false;
     }
   } catch (error) {
-    console.error("Error logging in user:", error);
+    console.error("Error logging in user:", error.message, error.stack);
   } finally {
+    console.log("Closing database connection...");
     await client.close();
   }
 }
+
 
 async function addRequestHelp(
   userId,
