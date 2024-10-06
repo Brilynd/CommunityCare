@@ -6,15 +6,15 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const ViewRequests = () => {
   const [requests, setRequests] = useState([]);
-  const [mapCenter, setMapCenter] = useState({ lat: 40.7128, lng: -74.0060 }); // Default center
+  const [mapCenter, setMapCenter] = useState({ lat: 40.7128, lng: -74.006 });
   const [userLocation, setUserLocation] = useState(null);
+  const [selectedRequest, setSelectedRequest] = useState(null); // For handling the selected request for the popup
 
   useEffect(() => {
     const fetchUserLocation = async () => {
       try {
         const response = await fetch(`https://ipapi.co/json/`);
         const data = await response.json();
-
         const { latitude, longitude } = data;
         setUserLocation({ lat: latitude, lng: longitude });
         setMapCenter({ lat: latitude, lng: longitude });
@@ -36,6 +36,11 @@ const ViewRequests = () => {
     fetchRequests();
   }, []);
 
+  // Function to handle closing the popup
+  const handleClosePopup = () => {
+    setSelectedRequest(null);
+  };
+
   return (
     <React.Fragment>
       <Navbar currSelected={"ViewRequests"} />
@@ -46,7 +51,9 @@ const ViewRequests = () => {
 
           {/* Google Maps Integration */}
           <div className="map-container">
-            <LoadScript googleMapsApiKey={"AIzaSyDzpbD_LBjyzk7_jQ00DjSF4_r9J5M8MAk"}>
+            <LoadScript
+              googleMapsApiKey={"AIzaSyDzpbD_LBjyzk7_jQ00DjSF4_r9J5M8MAk"}
+            >
               <GoogleMap
                 mapContainerStyle={{ width: "100%", height: "100%" }}
                 center={mapCenter}
@@ -79,7 +86,11 @@ const ViewRequests = () => {
               <p>No requests available at the moment.</p>
             ) : (
               requests.map((request, index) => (
-                <div className="request-card" key={index}>
+                <div
+                  className="request-card"
+                  key={index}
+                  onClick={() => setSelectedRequest(request)}
+                >
                   <div className="request-title">
                     <strong>Request Title:</strong> {request.title}
                   </div>
@@ -87,13 +98,49 @@ const ViewRequests = () => {
                     <strong>Type of Request:</strong> {request.type}
                   </div>
                   <div className="request-description">
-                    <strong>Description of Request:</strong> {request.description}
+                    <strong>Description of Request:</strong>{" "}
+                    {request.description}
                   </div>
                 </div>
               ))
             )}
           </div>
         </div>
+
+        {/* Popup for selected request */}
+        {selectedRequest && (
+          <div className="request-popup">
+            <div className="popup-header">
+              <button className="close-popup" onClick={handleClosePopup}>
+                X
+              </button>
+            </div>
+            <div className="popup-content">
+              <label>
+                Person in Need:
+                <p className="User-Info-Display">
+                  {selectedRequest.user.firstName +
+                    " " +
+                    selectedRequest.user.lastName}
+                </p>
+              </label>
+              <label>
+                Request Title:
+                <p className="User-Info-Display">{selectedRequest.title}</p>
+              </label>
+              <label>
+                Type of Request:
+                <p className="User-Info-Display">{selectedRequest.type}</p>
+              </label>
+              <label>
+                Description:
+                <p className="User-Info-Display bigger">
+                  {selectedRequest.description}
+                </p>
+              </label>
+            </div>
+          </div>
+        )}
       </div>
     </React.Fragment>
   );
