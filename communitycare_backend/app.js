@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 // Middleware to parse incoming JSON requests
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Sample route
 app.get("/", (req, res) => {

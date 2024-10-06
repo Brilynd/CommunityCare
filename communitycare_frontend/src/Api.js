@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://localhost:5001';
 
 export const loginUser = async (username, password) => {
     try {
@@ -11,8 +11,8 @@ export const loginUser = async (username, password) => {
                 "Content-Type": "application/json",
             }
         });
-
-        return response.data;
+        console.log(await response);
+        return await response.data;
     } catch (error) {
         console.error("Error logging in user:", error);
         return null;
