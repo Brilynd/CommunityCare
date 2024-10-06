@@ -34,6 +34,7 @@
     transform: translate(-90%,50%);
 }
 .jumbotronRHS{
+    max-width:50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,4 +51,29 @@
         width: 80%;
         margin: 15px auto;
     }
+}
+@media (max-width: 425px) {
+    .jumboTronContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    .overlay{
+        display: none;
+    }
+    .jumbotronRHS{
+        width: 100%;
+        margin: 15px auto;
+    }
+   .jumboTronLHS{
+       width: 100%;
+   }
+   .jumbotronRHS{
+    max-width: 100%;
+   }
+   .jumbotronRHS img{
+    overflow: hidden;
+    max-width: 100%;
+    margin: 15px 0;
+   }
+    
 }

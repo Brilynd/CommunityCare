@@ -167,6 +167,7 @@ label {
 
 @media (max-width: 576px) {
   .map-container {
+    overflow-x: visible !important;
     height: 300px; /* Reduce height for small screens */
   }
 

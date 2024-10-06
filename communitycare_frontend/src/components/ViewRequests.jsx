@@ -56,7 +56,7 @@ const ViewRequests = () => {
               googleMapsApiKey={"AIzaSyDzpbD_LBjyzk7_jQ00DjSF4_r9J5M8MAk"}
             >
               <GoogleMap
-                mapContainerStyle={{ width: "100%", height: "100%" }}
+                mapContainerStyle={{ width: "100%", height: "100%",overflowX:"visible" }}
                 center={mapCenter}
                 zoom={12}
               >

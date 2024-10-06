@@ -8,7 +8,7 @@ const JumboTron = ({toggleSignIn,isSignedIn}) => {
         <div className="jumboTronContainer">
             <div className="jumbotronLHS">
             <h1>Connecting Communities with Relief</h1>
-            <p>CommunityCare connect communities impacted by natural disasters with vital relief resources, volunteers, and first responders, facilitating swift rescue efforts and supporting long-term rebuilding.</p>
+            <p>CommunityCare connects communities impacted by natural disasters with vital relief resources, volunteers, and first responders, facilitating swift rescue efforts and supporting long-term rebuilding.            </p>
             {!isSignedIn ?<PrimaryBtn text="Get Started" onClick={() => toggleSignIn()} />:<PrimaryBtn text="Request Help" onClick={()=>{navigate("/request-help")}} />}
             </div>
             <div className="jumbotronRHS">

@@ -6,10 +6,12 @@
     justify-content: space-between;
     padding: 10px 20px;
     background-color: rgba(255, 255, 255, 0.2); /* Set background transparency */
+    position: relative;
+    overflow-x: hidden; /* Hide horizontal overflow */
   }
-  .active{
+  
+  .active {
     color: #FFF !important;
-
   }
   
   .logo-container {
@@ -24,7 +26,7 @@
   }
   
   .secondaryLogoTxt {
-    font-size: 16;
+    font-size: 16px;
     font-weight: 400;
   }
   
@@ -39,6 +41,10 @@
     font-size: 24px;
     cursor: pointer;
     display: none;
+    position: fixed; /* Fix position to remain visible */
+    top: 15px;
+    right: 20px;
+    z-index: 101;
   }
   
   .links {
@@ -50,15 +56,17 @@
   .link {
     opacity: 1;
     position: relative;
-    color: rgba(255, 255, 255, .5);
+    color: rgba(255, 255, 255, 0.5); /* Matching desktop color */
     text-decoration: none;
     margin-left: 20px;
     font-weight: 500;
     padding: 10px;
   }
-  p{
-    margin:0;
+  
+  p {
+    margin: 0;
   }
+  
   .nav-link {
     position: relative;
   }
@@ -93,11 +101,12 @@
       display: none; /* Hide links initially */
       flex-direction: column;
       width: 100%;
-      background-color: #333;
-      position: absolute;
+      background-color: rgb(112 167 156);
+            position: fixed; /* Fix position to stay within viewport */
       top: 60px;
       left: 0;
       z-index: 100;
+      padding: 10px 0;
     }
   
     .links.show {
@@ -108,6 +117,13 @@
       margin-left: 0;
       padding: 15px;
       text-align: center;
+      color: rgba(255, 255, 255, 0.8); /* Make mobile text color slightly bolder */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Divider line between items */
+    }
+  
+    .link:hover {
+      color: #FFF;
+      background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
     }
   }
   
