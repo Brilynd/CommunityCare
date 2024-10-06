@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import './RequestHelp.css';
 import Navbar from './Navbar';
+import SignupPopup from './SignUp';
+import SignIn from './SignIn';
 const RequestHelp = () => {
     const [title, setTitle] = useState('');
     const [typeOfRequest, setTypeOfRequest] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
     const [financialAssistance, setFinancialAssistance] = useState(false);
+    const [signUpPopup, setSignUp] = useState(false);
+    const [signInPopup, setSignIn] = useState(false);
+    const toggleSignInPopup = () => {
+        setSignIn(!signInPopup);
+    };
 
+    const toggleSignUpPopup = () => {
+        setSignUp(!signUpPopup);
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({
@@ -21,7 +31,7 @@ const RequestHelp = () => {
 
     return (
         <React.Fragment>
-            <Navbar currSelected={"RequestHelp"}/>
+            <Navbar currSelected={"RequestHelp"} toggleSignInPopup={toggleSignInPopup} toggleSignUpPopup={toggleSignUpPopup}/>
             // ADD POP UP FUNCTIONALITY
         <div className="request-help-container">
             <h2 className="header">Submit a Request for Assistance</h2>
@@ -86,6 +96,18 @@ const RequestHelp = () => {
                 </button>
             </form>
         </div>
+        {signUpPopup && (
+                <SignupPopup
+                    toggleSignInPopup={toggleSignInPopup} // Pass toggleSignInPopup here
+                    toggleSignUpPopup={toggleSignUpPopup}
+                />
+            )}
+            {signInPopup && (
+                <SignIn
+                    toggleSignInPopup={toggleSignInPopup}
+                    toggleSignUpPopup={toggleSignUpPopup}
+                />
+            )}
         </React.Fragment>
     );
 };

@@ -39,9 +39,6 @@ const Navbar = ({ toggleSignUpPopup, toggleSignInPopup, currSelected }) => {
           <Link to="/view-requests" className="link nav-link" onClick={toggleMobileMenu}>
             View Requests
           </Link>
-          <Link to="/profile" className="link nav-link" onClick={toggleMobileMenu}>
-            Profile
-          </Link>
           {isLoggedIn ? (
             <p className="link nav-link" onClick={handleSignOut}>
               Sign Out
